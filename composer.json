@@ -1,0 +1,25 @@
+{
+    "name": "yoannrenard/phpunit-desktop-notifier",
+    "description": "Get a desktop notification when PHPUnit has finished to run your tests",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Renard Yoann",
+            "email": "renard.yoann@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PHPUnitDesktopNotifier\\": "src/",
+            "Demo\\": "demo/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "require": {
+        "php": ">=5.5.9",
+        "phpunit/phpunit":    "^4.5",
+        "jolicode/jolinotif": "^1.0"
+    }
+}

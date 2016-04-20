@@ -1,0 +1,28 @@
+language: php
+
+sudo: false
+
+php:
+  - '5.5.9'
+  - '5.6'
+  - '7.0'
+  - hhvm
+  - nightly
+
+cache:
+    directories:
+        - $HOME/.composer/cache/
+        - vendor
+
+install:
+    # Install dependencies
+    - composer self-update
+    - composer install --prefer-dist
+
+script:
+    # Run tests
+    - bin/phpunit -c phpunit.xml
+
+after_failure:
+    # Display error logs
+    - cat /var/log/php_errors.log
