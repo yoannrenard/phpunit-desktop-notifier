@@ -24,6 +24,9 @@ class PHPUnitTestCounter implements PHPUnitTestCounterInterface
     /** @var int */
     private $nbEndedTestSuite;
 
+    /**
+     * PHPUnitTestCounter constructor.
+     */
     public function __construct()
     {
         $this->nbStartedTest      = 0;
@@ -33,33 +36,48 @@ class PHPUnitTestCounter implements PHPUnitTestCounterInterface
         $this->nbEndedTestSuite   = 0;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function incrementNbStartedTest()
     {
         $this->nbStartedTest++;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function incrementNbErrorTest()
     {
         $this->nbErrorTest++;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function incrementNbFailureTest()
     {
         $this->nbFailureTest++;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function incrementNbStartedTestSuite()
     {
         $this->nbStartedTestSuite++;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function incrementNbEndedTestSuite()
     {
         $this->nbEndedTestSuite++;
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function isEveryTestFinished()
     {
@@ -67,7 +85,7 @@ class PHPUnitTestCounter implements PHPUnitTestCounterInterface
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getNbStartedTest()
     {
@@ -75,7 +93,7 @@ class PHPUnitTestCounter implements PHPUnitTestCounterInterface
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getNbFailure()
     {

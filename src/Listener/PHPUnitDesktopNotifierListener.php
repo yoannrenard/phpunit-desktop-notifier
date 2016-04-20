@@ -31,26 +31,41 @@ class PHPUnitDesktopNotifierListener extends PHPUnit_Framework_BaseTestListener
         $this->phpUnitTestCounter = $phpUnitTestCounter;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function startTest(PHPUnit_Framework_Test $test)
     {
         $this->phpUnitTestCounter->incrementNbStartedTest();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function addError(PHPUnit_Framework_Test $test, \Exception $e, $time)
     {
         $this->phpUnitTestCounter->incrementNbErrorTest();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function addFailure(PHPUnit_Framework_Test $test, PHPUnit_Framework_AssertionFailedError $e, $time)
     {
         $this->phpUnitTestCounter->incrementNbFailureTest();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function startTestSuite(PHPUnit_Framework_TestSuite $suite)
     {
         $this->phpUnitTestCounter->incrementNbStartedTestSuite();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function endTestSuite(PHPUnit_Framework_TestSuite $suite)
     {
         $this->phpUnitTestCounter->incrementNbEndedTestSuite();
