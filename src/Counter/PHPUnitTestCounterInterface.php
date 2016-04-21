@@ -43,4 +43,14 @@ interface PHPUnitTestCounterInterface
      * @return int
      */
     public function getNbFailure();
+
+    /**
+     * @param int $nbAssert
+     */
+    public function addAssert($nbAssert);
+
+    /**
+     * @return int
+     */
+    public function getNbAssert();
 }
