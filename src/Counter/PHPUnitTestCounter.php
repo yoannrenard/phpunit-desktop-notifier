@@ -24,6 +24,9 @@ class PHPUnitTestCounter implements PHPUnitTestCounterInterface
     /** @var int */
     private $nbEndedTestSuite;
 
+    /** @var int */
+    private $nbAssert;
+
     /**
      * PHPUnitTestCounter constructor.
      */
@@ -34,6 +37,7 @@ class PHPUnitTestCounter implements PHPUnitTestCounterInterface
         $this->nbFailureTest      = 0;
         $this->nbStartedTestSuite = 0;
         $this->nbEndedTestSuite   = 0;
+        $this->nbAssert           = 0;
     }
 
     /**
@@ -98,5 +102,21 @@ class PHPUnitTestCounter implements PHPUnitTestCounterInterface
     public function getNbFailure()
     {
         return $this->nbErrorTest + $this->nbFailureTest;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addAssert($nbAssert)
+    {
+        $this->nbAssert += $nbAssert;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNbAssert()
+    {
+        return $this->nbAssert;
     }
 }

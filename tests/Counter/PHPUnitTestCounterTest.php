@@ -22,6 +22,9 @@ class PHPUnitTestCounterTest extends \PHPUnit_Framework_TestCase
     /** @var \ReflectionProperty */
     private $nbEndedTestSuiteReflectionProperty;
 
+    /** @var \ReflectionProperty */
+    private $nbAssertReflectionProperty;
+
     /**
      * setUp
      */
@@ -45,6 +48,9 @@ class PHPUnitTestCounterTest extends \PHPUnit_Framework_TestCase
 
         $this->nbEndedTestSuiteReflectionProperty = $class->getProperty('nbEndedTestSuite');
         $this->nbEndedTestSuiteReflectionProperty->setAccessible(true);
+
+        $this->nbAssertReflectionProperty = $class->getProperty('nbAssert');
+        $this->nbAssertReflectionProperty->setAccessible(true);
 
         $this->phpUnitTestCounter = new PHPUnitTestCounter();
     }
@@ -96,6 +102,7 @@ class PHPUnitTestCounterTest extends \PHPUnit_Framework_TestCase
         $this->nbEndedTestSuiteReflectionProperty->setValue($this->phpUnitTestCounter, 2);
 
         $this->assertTrue($this->phpUnitTestCounter->isEveryTestFinished());
+        $this->assertTrue($this->phpUnitTestCounter->isEveryTestFinished());
     }
 
     /** @test */
@@ -114,5 +121,15 @@ class PHPUnitTestCounterTest extends \PHPUnit_Framework_TestCase
         $this->nbFailureTestReflectionProperty->setValue($this->phpUnitTestCounter, 3);
 
         $this->assertSame(5, $this->phpUnitTestCounter->getNbFailure());
+    }
+
+    /** @test */
+    public function it_should_add_some_assert()
+    {
+        $this->phpUnitTestCounter->addAssert(2);
+        $this->assertSame(2, $this->nbAssertReflectionProperty->getValue($this->phpUnitTestCounter));
+
+        $this->phpUnitTestCounter->addAssert(3);
+        $this->assertSame(5, $this->nbAssertReflectionProperty->getValue($this->phpUnitTestCounter));
     }
 }
