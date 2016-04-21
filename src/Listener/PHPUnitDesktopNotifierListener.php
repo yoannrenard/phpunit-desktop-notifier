@@ -27,7 +27,6 @@ class PHPUnitDesktopNotifierListener extends PHPUnit_Framework_BaseTestListener
      */
     public function __construct(PHPUnitTestCounterInterface $phpUnitTestCounter)
     {
-//        $this->phpUnitTestCounter = new PHPUnitTestCounter();
         $this->phpUnitTestCounter = $phpUnitTestCounter;
     }
 
