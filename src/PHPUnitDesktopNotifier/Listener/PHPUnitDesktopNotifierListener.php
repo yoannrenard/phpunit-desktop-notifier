@@ -89,7 +89,7 @@ class PHPUnitDesktopNotifierListener extends PHPUnit_Framework_BaseTestListener
                 $this->phpUnitTestCounter->getNbAssert(),
                 $this->phpUnitTestCounter->getNbFailure()
             );
-            $icon  = __DIR__.'/../../resources/icons/failure-64.png';
+            $icon  = __DIR__.'/../../../resources/icons/failure-64.png';
         } else {
             $title = 'Success!';
             $body  = sprintf(
@@ -97,7 +97,7 @@ class PHPUnitDesktopNotifierListener extends PHPUnit_Framework_BaseTestListener
                 $this->phpUnitTestCounter->getNbStartedTest(),
                 $this->phpUnitTestCounter->getNbAssert()
             );
-            $icon  = __DIR__.'/../../resources/icons/success-64.png';
+            $icon  = __DIR__.'/../../../resources/icons/success-64.png';
         }
 
         $notification = (new Notification())
