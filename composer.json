@@ -9,8 +9,8 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-            "PHPUnitDesktopNotifier\\": "src/"
+        "psr-0": {
+            "PHPUnitDesktopNotifier": "src/"
         }
     },
     "config": {
