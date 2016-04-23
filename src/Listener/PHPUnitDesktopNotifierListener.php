@@ -8,6 +8,7 @@ use PHPUnit_Framework_AssertionFailedError;
 use PHPUnit_Framework_BaseTestListener;
 use PHPUnit_Framework_Test;
 use PHPUnit_Framework_TestSuite;
+use PHPUnitDesktopNotifier\Counter\PHPUnitTestCounter;
 use PHPUnitDesktopNotifier\Counter\PHPUnitTestCounterInterface;
 
 /**
@@ -27,7 +28,7 @@ class PHPUnitDesktopNotifierListener extends PHPUnit_Framework_BaseTestListener
      */
     public function __construct(PHPUnitTestCounterInterface $phpUnitTestCounter)
     {
-        $this->phpUnitTestCounter = $phpUnitTestCounter;
+        $this->phpUnitTestCounter = ($phpUnitTestCounter) ?: new PHPUnitTestCounter();
     }
 
     /**
