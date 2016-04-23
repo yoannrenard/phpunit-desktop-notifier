@@ -96,22 +96,21 @@ class PHPUnitTestCounterTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_return_true_as_nbEndedTestSuite_is_smaller_than_nbStartedTestSuite()
+    public function it_should_return_false_as_nbEndedTestSuite_is_smaller_than_nbStartedTestSuite()
     {
         $this->nbStartedTestSuiteReflectionProperty->setValue($this->phpUnitTestCounter, 3);
         $this->nbEndedTestSuiteReflectionProperty->setValue($this->phpUnitTestCounter, 2);
 
-        $this->assertTrue($this->phpUnitTestCounter->isEveryTestFinished());
-        $this->assertTrue($this->phpUnitTestCounter->isEveryTestFinished());
+        $this->assertFalse($this->phpUnitTestCounter->isEveryTestFinished());
     }
 
     /** @test */
-    public function it_should_return_false_as_nbEndedTestSuite_is_bigger_than_nbStartedTestSuite()
+    public function it_should_return_true_as_nbEndedTestSuite_is_bigger_than_nbStartedTestSuite()
     {
         $this->nbStartedTestSuiteReflectionProperty->setValue($this->phpUnitTestCounter, 2);
         $this->nbEndedTestSuiteReflectionProperty->setValue($this->phpUnitTestCounter, 3);
 
-        $this->assertFalse($this->phpUnitTestCounter->isEveryTestFinished());
+        $this->assertTrue($this->phpUnitTestCounter->isEveryTestFinished());
     }
 
     /** @test */

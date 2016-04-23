@@ -85,7 +85,7 @@ class PHPUnitTestCounter implements PHPUnitTestCounterInterface
      */
     public function isEveryTestFinished()
     {
-        return $this->nbStartedTestSuite > $this->nbEndedTestSuite;
+        return $this->nbStartedTestSuite <= $this->nbEndedTestSuite;
     }
 
     /**
