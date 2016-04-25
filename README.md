@@ -1,11 +1,15 @@
 # phpunit-desktop-notifier
-Get notified directly on your desktop that PHPUnit has finished to run your tests.
 
 [![Build Status](https://travis-ci.org/yoannrenard/phpunit-desktop-notifier.svg?branch=master)](https://travis-ci.org/yoannrenard/phpunit-desktop-notifier)
 
+Get notified directly on your desktop that PHPUnit has finished to run your tests.
+
+![Demo](doc/img/notifier.png)
+
 ## Installing Dependencies
 
-Use [Composer][composer] and run
+Use [Composer][composer] and run :
+
 ```bash
 $> php composer.phar require --dev yoannrenard/phpunit-desktop-notifier
 ```
