@@ -79,36 +79,44 @@ class PHPUnitDesktopNotifierListener extends PHPUnit_Framework_BaseTestListener
         $this->phpUnitTestCounter->incrementNbEndedTestSuite();
 
         if ($this->phpUnitTestCounter->isEveryTestFinished()) {
-            $icon  = __DIR__.'/../../resources/icons/';
-            if ($this->phpUnitTestCounter->getNbFailure()) {
-                $title = 'FAILURES!';
-                $body  = sprintf(
-                    'Tests: %d, Assertions: %d, Failures: %d.',
-                    $this->phpUnitTestCounter->getNbStartedTest(),
-                    $this->phpUnitTestCounter->getNbAssert(),
-                    $this->phpUnitTestCounter->getNbFailure()
-                );
-                $icon .= 'failure-64.png';
-            } else {
-                $title = 'Success!';
-                $body  = sprintf(
-                    '%d tests, %d assertions',
-                    $this->phpUnitTestCounter->getNbStartedTest(),
-                    $this->phpUnitTestCounter->getNbAssert()
-                );
-                $icon .= 'success-64.png';
-            }
+            $this->notifyDesktopUser();
+        }
+    }
 
+    /**
+     * Notifier desktop user
+     */
+    private function notifyDesktopUser()
+    {
+        $icon  = __DIR__.'/../../resources/icons/';
+        if ($this->phpUnitTestCounter->getNbFailure()) {
+            $title = 'FAILURES!';
+            $body  = sprintf(
+                'Tests: %d, Assertions: %d, Failures: %d.',
+                $this->phpUnitTestCounter->getNbStartedTest(),
+                $this->phpUnitTestCounter->getNbAssert(),
+                $this->phpUnitTestCounter->getNbFailure()
+            );
+            $icon .= 'failure-64.png';
+        } else {
+            $title = 'Success!';
+            $body  = sprintf(
+                '%d tests, %d assertions',
+                $this->phpUnitTestCounter->getNbStartedTest(),
+                $this->phpUnitTestCounter->getNbAssert()
+            );
+            $icon .= 'success-64.png';
+        }
+
+        $notifier = NotifierFactory::create();
+        if ($notifier) {
             $notification = (new Notification())
                 ->setTitle($title)
                 ->setBody($body)
                 ->setIcon($icon)
             ;
 
-            $notifier = NotifierFactory::create();
-            if ($notifier) {
-                $notifier->send($notification);
-            }
+            $notifier->send($notification);
         }
     }
 }
