@@ -24,7 +24,10 @@ $> php composer.phar require --dev yoannrenard/phpunit-desktop-notifier
 ```xml
 <phpunit ...>
     ...
-    <listener class="PHPUnitDesktopNotifier\Listener\PHPUnitDesktopNotifierListener" />
+    <listeners>
+        ...
+        <listener class="PHPUnitDesktopNotifier\Listener\PHPUnitDesktopNotifierListener" />
+    </listeners>
 </phpunit>
 ```
 
